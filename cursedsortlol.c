@@ -93,6 +93,7 @@ struct node* searchInsert(struct node* first, struct node* dynamic, int value) {
 
 			// connect the nodes
 			newnode->next = NULL;
+			newnode->prev = dynamic;
 			dynamic->next = newnode;
 
 			// same first node
