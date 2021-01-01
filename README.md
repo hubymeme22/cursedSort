@@ -1,13 +1,17 @@
+<h2>
 Created by Hubert F. Espinola I
+</h2>
+<h2>
 Last updated : January 1, 2021
+</h2>
 
-This program was designed for continuous sorting
+- This program was designed for continuous sorting
 
-= Since the program is using a linked list, the size of input does not matter
+- Since the program is using a linked list, the size of input does not matter
 
-= Note that each of the list has "frequency" data member which determines the occurence of the "value" data member
+- Note that each of the list has "frequency" data member which determines the occurence of the "value" data member
 
-Function :
+<h3>Functions :
 
 <b>searchInsert(struct node* firstNode, struct node* dyamicNode, int value);</b>
 
@@ -21,11 +25,11 @@ Function :
 
 <h3>Parameters:</h3>
 
-<b>firstNode</b> = first node of the linked list
+<b>firstNode</b> - first node of the linked list
 
-<b>dynamicNode</b> = first node but is needed to be passed twice for recursion purposes (lol, idk the term)
+<b>dynamicNode</b> - first node but is needed to be passed twice for recursion purposes (lol, idk the term)
 
-<b>value</b> = an integer input
+<b>value</b> - an integer input
 
 <h3>Uses:</h3>
 
