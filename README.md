@@ -55,7 +55,9 @@ For sorting an array:
 	}
 
 	// display values from the sorted linked list
+	printf("|");
 	display_sorted(first);
+	printf("\n");
 	================ end ===============
 
 
@@ -75,5 +77,10 @@ For sorting user's input
 		printf ("Enter value : ");
 		scanf("%i", &stored);
 		first = searchInsert(first, first, stored);
+
+		printf("|");
+		display_sorted(first);
+		printf("\n");
+
 	}
 	======================== end ========================
