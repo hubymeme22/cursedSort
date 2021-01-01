@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-//////////// global vars //////////////
-int max = 3;	// array max
-
 //////////// initialize ////////////////
 struct node {
 	int value;
@@ -14,75 +11,81 @@ struct node {
 
 // search all the values from first to last list
 //struct node* searchInsert(struct node* first, int value);
-void searchInsert(struct node* first, int value);
+struct node* searchInsert(struct node* first, struct node* dynamic, int value);
 void display_sorted(struct node* first);
 
 //////////// main function ////////////
 int main() {
-	// values to be inserted: 1 2 1 3 5
+	// value to be stored
+	int value;
+
+	// first node
 	struct node* first = malloc(sizeof(struct node));
 	struct node* current;
 
-	first->value = 3;
+	// initialize the first value in array
+	first->value = 1;
 	first->frequency = 1;
 	first->next = NULL;
+	first->prev = NULL;
 
-	// needs a changing node (current)
-	// and keep track on first node
-	current = first;
+	// enter values and sort it
+	while (1) {
+		printf("Enter a value to be sorted : ");
+		scanf("%i", &value);
 
-//	current = searchInsert(current, 3);
-//	current = searchInsert(current, 1);
-//	current = searchInsert(current, 2);
-//	current = searchInsert(current, 4);
-// let's try to use a void function for searching and inserting.
+		first = searchInsert(first, first, value);
 
-
-	printf("|");
-	display_sorted(current);
-	printf("\n");
+		printf("|");
+		display_sorted(first);
+		printf("\n");
+	}
 
 	return 0;
 }
 
 /////////// redefinition /////////////
-// search for value and insert in appropriatr position
-void searchInsert(struct node* first, int value) {
-	puts ("SI repeated??");
-	if (first->value == value) {
+// search for value and insert in appropriate position
+// returns the first position
+struct node* searchInsert(struct node* first, struct node* dynamic, int value) {
+	if (dynamic->value == value) {
 		// increment the frequency of occurence
-		first->frequency += 1;
-	// value < f
-	} else if (first->value > value) {
+		dynamic->frequency += 1;
+
+		// first node didnt change, so we'll return the same first node
+		return first;
+	} else if (dynamic->value > value) {
 		// make new node
 		// assign and update values
 		struct node* new_first = malloc(sizeof(struct node));
 		new_first->value = value;
 		new_first->frequency = 1;
 
-		// connect the two nodes
-		new_first->next = first;
-		if (first->prev == NULL) {
+		if (dynamic->prev == NULL) {		// this means dynamic = first
 			// if this is the very first node
 			// then assign the current node as the first node
 			// else, modify the nodes for re-routing
-			first->prev = new_first;
+			dynamic->prev = new_first;
+			new_first->next = dynamic;
 			new_first->prev = NULL;
-		} else {
-			// first re-route
-			(first->prev)->next = new_first;
-			new_first->prev = (first->prev);
 
-			// final re-route
-			first->prev = new_first;
-			new_first->next = first;
+			// new first node is now assigned
+			return new_first;
+		} else {
+			// re-route
+			dynamic->prev->next = new_first;
+			new_first->prev = dynamic->prev;
+			new_first->next = dynamic;
+			dynamic->prev = new_first;
+
+			// same first node
+			return first;
 		}
-	// value > f
-	} else { //if (first->value < value) {
+	} else {
 		// check for null
 		// if there's a null, make new node and assign it as the last node
 		// if next node is not null, then recurse the process
-		if (first->next == NULL) {
+		if (dynamic->next == NULL) {
 			// make new node
 			struct node* newnode = malloc(sizeof(struct node));
 			newnode->frequency = 1;
@@ -90,11 +93,13 @@ void searchInsert(struct node* first, int value) {
 
 			// connect the nodes
 			newnode->next = NULL;
-			first->next = newnode;
+			dynamic->next = newnode;
+
+			// same first node
 			return first;
 		} else {
 			// recurse hahaha lol noice.
-			return searchInsert(first->next, value);
+			return searchInsert(first, dynamic->next, value);
 		}
 	}
 }
