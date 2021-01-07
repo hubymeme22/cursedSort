@@ -24,12 +24,19 @@ int main() {
 	struct node* current;
 
 	// initialize the first value in array
-	first->value = 1;
-	first->frequency = 1;
 	first->next = NULL;
 	first->prev = NULL;
 
 	// enter values and sort it
+	printf("Enter a value to be sorted : ");
+	scanf("%i", &value);
+	first->value = value;
+	first->frequency = 1;
+
+	printf("|");
+	display_sorted(first);
+	printf("\n");
+
 	while (1) {
 		printf("Enter a value to be sorted : ");
 		scanf("%i", &value);
