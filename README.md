@@ -3,9 +3,7 @@
 <h2>
 Created by Hubert F. Espinola I
 </h2>
-<h2>
-Last updated : January 1, 2021
-</h2>
+Last updated : IDK.. maybe, kiss my ass
 
 - This program was designed for continuous sorting
 
