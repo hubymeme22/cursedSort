@@ -71,6 +71,20 @@ For sorting user's input
 	first->next = NULL;
 	first->prev = NULL;
 
+	// user input
+	printf ("Enter value : ");
+	scanf("%i", &stored);
+	
+	// store that cutie input
+	first->value = stored;
+	first->frequency = 1;
+	
+	// display visual
+	printf("|");
+	display_sorted(first);
+	printf("\n");
+	
+	// clap cheeks
 	while (1) {
 		printf ("Enter value : ");
 		scanf("%i", &stored);
