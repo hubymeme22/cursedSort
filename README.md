@@ -4,16 +4,21 @@
 A simple linked list program designed for continuous sorting.
 
 (update from me)
-I'm currently second year and I thought this concept (back then) was for sorting but, it turns out that this concept is very similar to run-length encoding compression, but in linked list form.
+I'm currently second year and I thought this concept (back then) was new and only for sorting but, it turns out that this concept is very similar to run-length encoding compression, but in linked list form (did not mean to copy any of other's concepts).
 
 #### Functions:
 - searchInsert(**struct node*** firstNode, **struct node*** dynamicNode, **int** value)
+
 --This function inserts the new value to the list
+
 --***firstNode***  - the head node (starting node)
+
 --***dynamicNode*** - also the head node (just needed for checking and sorting)
+
 --***value*** - the integer value to be inserted
 
 - display_sorted(***struct node**** firstNode)
+
 -- Displays the sorted values on the list.
 
 #### Example usage:
